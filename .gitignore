@@ -1,3 +1,6 @@
+# Environment variables
+.env
+
 # Python
 __pycache__/
 *.py[cod]
@@ -30,10 +33,14 @@ ENV/
 *.swp
 *.swo
 
+# Logs
+*.log
+
+# Local development
+.DS_Store
+Thumbs.db
+
 # API Keys and sensitive data
 APIKey.txt
 *.env
-*.key
-
-# Logs
-*.log 
+*.key 

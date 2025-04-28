@@ -36,6 +36,21 @@
         {% if significant_move %}
             <p class="alert">⚠️ Significant price movement detected!</p>
         {% endif %}
+
+        <div class="trading-recommendation" style="margin-top: 20px; padding: 15px; border-radius: 5px; background-color: {% if trading_recommendation.recommendation == 'Buy' %}#e6ffe6{% elif trading_recommendation.recommendation == 'Sell' %}#ffe6e6{% else %}#f5f5f5{% endif %};">
+            <h3>Trading Recommendation</h3>
+            <p style="font-size: 1.2em; font-weight: bold;">
+                {% if trading_recommendation.recommendation == 'Buy' %}
+                    🟢 {{ trading_recommendation.recommendation }}
+                {% elif trading_recommendation.recommendation == 'Sell' %}
+                    🔴 {{ trading_recommendation.recommendation }}
+                {% else %}
+                    ⚪ {{ trading_recommendation.recommendation }}
+                {% endif %}
+                (Confidence: {{ trading_recommendation.confidence }})
+            </p>
+            <p>{{ trading_recommendation.reasoning }}</p>
+        </div>
     </div>
 
     {% if headlines %}

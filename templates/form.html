@@ -3,16 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Stock Lookup</title>
+    <style>
+        .error {
+            color: red;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+        .warning {
+            color: orange;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid orange;
+            border-radius: 5px;
+        }
+        .success {
+            color: green;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid green;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Enter a Stock Symbol</h1>
+    
+    {% if not api_keys_configured %}
+    <div class="warning">
+        <h2>⚠️ API Keys Not Configured</h2>
+        <p>Please create a <code>.env</code> file in your project directory with the following content:</p>
+        <pre>
+FINNHUB_API_KEY=your_finnhub_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+        </pre>
+        <p>After creating the file, restart the application.</p>
+    </div>
+    {% else %}
+    <div class="success">
+        <p>✅ API Keys are configured and ready to use!</p>
+    </div>
+    {% endif %}
+
     <form action="/stock" method="post">
         <input type="text" name="symbol" required>
         <button type="submit">Get Stock Info</button>
     </form>
 
     {% if error %}
-    <p style="color:red;">{{ error }}</p>
+    <div class="error">
+        <p>{{ error }}</p>
+    </div>
     {% endif %}
 </body>
 </html>
