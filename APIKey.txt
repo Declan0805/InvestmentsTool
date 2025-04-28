@@ -1,7 +1,0 @@
-FA2OKOXO27TM5C2N
-
-https://www.alphavantage.co/support/#api-key
-
-FINNHUB_API_KEY = "d07o5fhr01qp8st5d4tgd07o5fhr01qp8st5d4u0"  # <--- Replace this with your real API key
-open_ai_api_key = "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"
-openai.api_key = open_ai_api_key
