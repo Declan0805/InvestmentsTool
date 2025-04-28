@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Results</title>
+</head>
+<body>
+    <h1>Stock Information for {{ symbol }}</h1>
+    <p>Last updated: {{ last_updated }}</p>
+
+    <ul>
+        <li><strong>Price:</strong> {{ price }}</li>
+        <li><strong>Change:</strong> {{ change }}</li>
+        <li><strong>Percent Change:</strong> {{ change_percent }}</li>
+    </ul>
+
+    {% if significant_move %}
+        <p style="color: red; font-weight: bold;">⚠️ Significant price movement detected!</p>
+    {% endif %}
+
+    {% if headlines %}
+    <h2>Latest News</h2>
+    <ul>
+        {% for headline in headlines %}
+        <li><a href="{{ headline.link }}" target="_blank">{{ headline.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <a href="/" style="margin-right: 10px;">Search Another Stock</a>
+    <a href="/refresh/{{ symbol }}">Refresh Stock Info</a>
+</body>
+</html>
